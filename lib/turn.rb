@@ -1,8 +1,6 @@
-require './lib/turn'
-
-class Game
+class Turn
   attr_reader
-
+  
   def initialize
   end
 end

@@ -1,6 +1,4 @@
-require './lib/turn'
-
-class Game
+class Codebreaker
   attr_reader
 
   def initialize

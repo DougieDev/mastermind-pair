@@ -1,9 +1,8 @@
 require 'minitest/autorun'
 require 'minitest/pride'
-require './lib/turn'
-require './lib/game'
+require './lib/codebreaker'
 
-class GameTest < Minitest::Test
+class CodeBreakerTest < Minitest::Test
   def setup
   end
 end
