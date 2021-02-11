@@ -15,4 +15,17 @@ class CodeMakerTest < Minitest::Test
     assert_equal @codemaker.colors, ["R", "G", "B", "Y"]
     assert_equal @codemaker.code, []
   end
+
+  def test_randomizing_code
+    @codemaker.randomize
+    assert_equal false, @codemaker.code == @codemaker.colors
+
+    @codemaker.code.clear
+    @codemaker.randomize
+    assert_equal false, @codemaker.code == @codemaker.colors
+
+    @codemaker.code.clear
+    @codemaker.randomize
+    assert_equal false, @codemaker.code == @codemaker.colors
+  end
 end
