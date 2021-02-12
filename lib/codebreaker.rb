@@ -1,6 +1,7 @@
 class Codebreaker
-  attr_reader
+  attr_reader :codemaker
 
-  def initialize
+  def initialize(codemaker)
+    @codemaker = codemaker
   end
 end
