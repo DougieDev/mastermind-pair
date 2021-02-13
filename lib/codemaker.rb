@@ -1,5 +1,6 @@
 class Codemaker
-  attr_reader :colors, :code
+  attr_reader :colors
+  attr_accessor :code
 
   def initialize
     @colors = ["R", "G", "B", "Y"]
