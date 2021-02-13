@@ -25,6 +25,10 @@ class Turn
     @winner = true if @codebreaker.guess == @codemaker.code
   end
 
+  def num_correct_colors
+    @codemaker.code.length - (@codemaker.code - @codebreaker.guess).count
+  end
+
 
 
 
