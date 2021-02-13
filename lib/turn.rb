@@ -21,6 +21,10 @@ class Turn
     end
   end
 
+  def has_won?
+    @winner = true if @codebreaker.guess == @codemaker.code
+  end
+
 
 
 
