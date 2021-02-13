@@ -1,10 +1,12 @@
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/message'
+require './lib/codemaker'
 
 class MessageTest < Minitest::Test
   def setup
     @message = Message.new
+    @codemaker = Codemaker.new
   end
 
   def test_it_exists
@@ -38,4 +40,14 @@ class MessageTest < Minitest::Test
     long_answer = "That input is too long, you must only choose four letters"
     assert_equal long_answer, @message.long_answer
   end
+
+  # def test_cheat
+  #   assert_equal @codemaker.code, @message.cheat
+  # end
+
+  def test_instructions
+    instructions = "There can be multiples of the same color."
+    assert_equal instructions, @message.instructions
+  end
+
 end
