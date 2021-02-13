@@ -42,4 +42,10 @@ class TurnTest < Minitest::Test
 
     assert_equal 3, @turn.num_correct_colors
   end
-end
+
+  def test_it_can_evaluate_num_correct_positions
+    @codebreaker.guess_code("yrbr")
+
+    assert_equal 1, @turn.num_correct_positions
+  end
+  end
