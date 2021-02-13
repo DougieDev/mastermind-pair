@@ -25,4 +25,8 @@ class MessageTest < Minitest::Test
     assert_equal play_game_msg, @message.play_game
   end
 
+  def test_quit
+    assert_equal "See you next time!", @message.quit
+  end
+
 end
