@@ -45,5 +45,4 @@ class Message
     p "It's up to you to guess what order they are in."
     p "There can be multiples of the same color."
   end
-
 end
