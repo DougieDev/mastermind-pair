@@ -29,4 +29,13 @@ class MessageTest < Minitest::Test
     assert_equal "See you next time!", @message.quit
   end
 
+  def short_answer
+    short_message = "That input is too short, you must choose four letters"
+    assert_equal short_message, @message.short_answer
+  end
+
+  def long_answer
+    long_answer = "That input is too long, you must only choose four letters"
+    assert_equal long_answer, @message.long_answer
+  end
 end
