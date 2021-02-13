@@ -1,3 +1,5 @@
+require './lib/codemaker'
+
 class Message
   # def initialize(message)
   #   @message = message
@@ -26,7 +28,7 @@ class Message
   end
 
   def long_answer
-    "That input is too long, you must only choose four letters"
+    p "That input is too long, you must only choose four letters"
   end
 
   # def user_guess
