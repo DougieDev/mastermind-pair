@@ -16,10 +16,13 @@ class MessageTest < Minitest::Test
   end
 
   def test_user_input_prompt
-    prompt = "Would you like to (p)lay, read the (i)nstructions, or (q)uit?"
-    assert_equal prompt, @message.user_input_prompt
+    user_prompt = "Would you like to (p)lay, read the (i)nstructions, or (q)uit?"
+    assert_equal user_prompt, @message.user_input_prompt
   end
 
-
+  def test_play_game
+    play_game_msg = "What's your guess?"
+    assert_equal play_game_msg, @message.play_game
+  end
 
 end
