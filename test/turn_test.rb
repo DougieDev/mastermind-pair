@@ -36,4 +36,10 @@ class TurnTest < Minitest::Test
     @codebreaker.guess_code("rgby")
     assert_equal true, @turn.has_won?
   end
+
+  def test_it_can_evaluate_num_correct_colors
+    @codebreaker.guess_code("yrbr")
+
+    assert_equal 3, @turn.num_correct_colors
+  end
 end
