@@ -8,6 +8,7 @@ require './lib/message'
 class TurnTest < Minitest::Test
   def setup
     @codemaker = Codemaker.new
+    @codemaker.code = ["R", "G", "B", "Y"]
     @codebreaker = Codebreaker.new(@codemaker)
     @message = Message.new
     @turn = Turn.new(@codemaker, @codebreaker, @message)
@@ -29,5 +30,10 @@ class TurnTest < Minitest::Test
     @codebreaker.guess_code("rrryy")
 
     assert_equal @message.long_answer, @turn.guess_length_check
+  end
+
+  def test_for_winner
+    @codebreaker.guess_code("rgby")
+    assert_equal true, @turn.has_won?
   end
 end
