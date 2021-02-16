@@ -37,7 +37,7 @@ class Message
   # end
 
   def cheat
-    p @codemaker.code
+    p "The secret code is: #{@codemaker.code}"
   end
 
   def instructions
