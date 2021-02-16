@@ -1,10 +1,10 @@
 class Turn
   attr_reader :message, :codemaker, :codebreaker, :number_of_guesses
 
-  def initialize(codemaker, codebreaker, message)
+  def initialize(codemaker, codebreaker)
     @codemaker = codemaker
     @codebreaker = codebreaker
-    @message = message
+    @message = Message.new
     @guess = nil
     @winner = false
     @number_of_guesses = 0
