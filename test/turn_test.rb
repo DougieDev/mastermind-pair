@@ -48,4 +48,12 @@ class TurnTest < Minitest::Test
 
     assert_equal 1, @turn.num_correct_positions
   end
+
+  def test_it_can_count_number_of_guesses
+    assert_equal 0, @turn.number_of_guesses
+
+    @turn.add_guess
+
+    assert_equal 1, @turn.number_of_guesses
   end
+end
