@@ -63,7 +63,9 @@ class Game
           show_cheat
           game_flow
         end
+
       @codebreaker.guess_code(@user_guess_prompt)
+      guess_length_check
       @turn.add_guess
       if @codebreaker.guess == @codemaker.code
         @message.winning_guess
@@ -73,6 +75,16 @@ class Game
         @message.user_guess
         incorrect_guess_hint
       end
+    end
+  end
+
+  def guess_length_check
+    if @codebreaker.guess.length < 4
+        @message.short_answer
+        game_flow
+    elsif @codebreaker.guess.length > 4
+        @message.long_answer
+        game_flow
     end
   end
 
@@ -94,7 +106,5 @@ class Game
         @message.quit
         abort
       end
-
-    # initial_selection
   end
 end
