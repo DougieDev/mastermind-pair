@@ -1,8 +1,8 @@
 class Codebreaker
-  attr_reader :codemaker, :guess
+  attr_reader :guess
 
-  def initialize(codemaker)
-    @codemaker = codemaker
+  def initialize
+    # @codemaker = codemaker
   end
 
   def guess_code(player_input)
