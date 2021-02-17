@@ -9,14 +9,11 @@ class Game
               :codemaker,
               :codebreaker
 
-  # def initialize(turn, message, codemaker, codebreaker)
   def initialize
-    @turn_count = 0
     @message = Message.new
     @codemaker = Codemaker.new
     @codebreaker = Codebreaker.new
     @turn = Turn.new(@codemaker, @codebreaker, @message)
-    # require 'pry'; binding.pry
   end
 
   def start_game
@@ -34,10 +31,6 @@ class Game
   def intro
     @message.play_game
   end
-
-  # def show_cheat
-  #   @message.cheat
-  # end
 
   def show_cheat
     p "The secret code is: #{@codemaker.code.join}"
@@ -59,7 +52,6 @@ class Game
 
 
   def game_flow
-    # @message.play_game
     until @turn.has_won? do 
       @user_guess_prompt = gets.chomp
       if @user_guess_prompt == 'q'
