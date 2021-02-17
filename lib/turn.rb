@@ -41,5 +41,4 @@ class Turn
   def add_guess
     @number_of_guesses += 1
   end
-
 end

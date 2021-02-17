@@ -9,7 +9,7 @@ class TurnTest < Minitest::Test
   def setup
     @codemaker = Codemaker.new
     @codemaker.code = ["R", "G", "B", "Y"]
-    @codebreaker = Codebreaker.new(@codemaker)
+    @codebreaker = Codebreaker.new
     @message = Message.new
     @turn = Turn.new(@codemaker, @codebreaker, @message)
   end
