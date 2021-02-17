@@ -14,14 +14,6 @@ class Turn
     @codemaker.code
   end
 
-  def guess_length_check
-    if @codebreaker.guess.length < 4
-        @message.short_answer
-    elsif @codebreaker.guess.length > 4
-           @message.long_answer
-    end
-  end
-
   def has_won?
     @winner = true if @codebreaker.guess == @codemaker.code
   end

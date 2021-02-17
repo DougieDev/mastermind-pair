@@ -22,16 +22,6 @@ class TurnTest < Minitest::Test
     assert_equal @codemaker.code, @turn.find_code
   end
 
-  def test_it_can_check_length
-    @codebreaker.guess_code("rrr")
-
-    assert_equal @message.short_answer, @turn.guess_length_check
-
-    @codebreaker.guess_code("rrryy")
-
-    assert_equal @message.long_answer, @turn.guess_length_check
-  end
-
   def test_for_winner
     @codebreaker.guess_code("rgby")
     assert_equal true, @turn.has_won?
