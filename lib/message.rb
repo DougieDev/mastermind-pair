@@ -37,6 +37,6 @@ class Message
   end
 
   def winning_guess
-    p "You got it, congrats!"
+    p "You got it!"
   end
 end
