@@ -6,7 +6,7 @@ require './lib/codemaker'
 class CodebreakerTest < Minitest::Test
   def setup
     @codemaker = Codemaker.new
-    @codebreaker = Codebreaker.new(@codemaker)
+    @codebreaker = Codebreaker.new
   end
 
   def test_it_exists
