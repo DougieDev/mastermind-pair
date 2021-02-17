@@ -65,7 +65,8 @@ class Game
       @turn.add_guess
       if @codebreaker.guess == @codemaker.code
         @message.winning_guess
-        break
+        end_game_prompt
+        # break
       elsif @codebreaker.guess != @codemaker.code
         @message.user_guess
         incorrect_guess_hint
@@ -76,5 +77,11 @@ class Game
   def incorrect_guess_hint
     p "#{@codebreaker.guess.join} has #{@turn.num_correct_colors} correct colors with #{@turn.num_correct_positions} in the correct positions."
     p "You've taken #{@turn.number_of_guesses} guess(es)."
+  end
+
+  def end_game_prompt
+    p "Congratulations! You guessed the sequence #{@codemaker.code.join} in #{@turn.number_of_guesses} guesses!"
+    p "Do you want to (p)lay again or (q)uit?"
+    # initial_selection
   end
 end
