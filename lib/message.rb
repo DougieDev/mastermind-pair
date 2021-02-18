@@ -3,7 +3,7 @@ class Message
   def welcome_message
     p "Welcome to MASTERMIND"
   end
-  
+
   def user_input_prompt
     p "Would you like to (p)lay, read the (i)nstructions, or (q)uit?"
   end
@@ -31,7 +31,7 @@ class Message
   end
 
   def instructions
-    p "The codemaker has created a 4 digit code featuring (r)ed, (g)reen, (b)lue, and (y)ellow." 
+    p "The codemaker has created a 4 digit code featuring (r)ed, (g)reen, (b)lue, and (y)ellow."
     p "It's up to you to guess what order they are in."
     p "There can be multiples of the same color."
   end
