@@ -1,21 +1,15 @@
 class Turn
-  attr_reader :message, :codemaker, :codebreaker, :number_of_guesses
+  attr_reader :codemaker,
+              :codebreaker,
+              :number_of_guesses
 
-  def initialize(codemaker, codebreaker, message)
+  def initialize(codemaker, codebreaker)
     @codemaker = codemaker
     @codebreaker = codebreaker
-    @message = Message.new
-    @guess = nil
-    @winner = false
-    @number_of_guesses = 0
-  end
-
-  def find_code
-    @codemaker.code
   end
 
   def has_won?
-    @winner = true if @codebreaker.guess == @codemaker.code
+    @codebreaker.guess == @codemaker.code
   end
 
   def num_correct_colors
@@ -28,9 +22,5 @@ class Turn
       array[0] == array[1]
     end
     @num_correct_positions.count
-  end
-
-  def add_guess
-    @number_of_guesses += 1
   end
 end

@@ -11,6 +11,5 @@ class Codemaker
     4.times do
       code << colors.sample
     end
-    code.join
   end
 end

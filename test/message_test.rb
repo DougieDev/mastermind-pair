@@ -1,12 +1,10 @@
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/message'
-require './lib/codemaker'
 
 class MessageTest < Minitest::Test
   def setup
     @message = Message.new
-    @codemaker = Codemaker.new
   end
 
   def test_it_exists
@@ -31,23 +29,18 @@ class MessageTest < Minitest::Test
     assert_equal "See you next time!", @message.quit
   end
 
-  def short_answer
+  def test_short_answer
     short_message = "That input is too short, you must choose four letters"
     assert_equal short_message, @message.short_answer
   end
 
-  def long_answer
+  def test_long_answer
     long_answer = "That input is too long, you must only choose four letters"
     assert_equal long_answer, @message.long_answer
   end
-
-  # def test_cheat
-  #   assert_equal @codemaker.code, @message.cheat
-  # end
 
   def test_instructions
     instructions = "There can be multiples of the same color."
     assert_equal instructions, @message.instructions
   end
-
 end

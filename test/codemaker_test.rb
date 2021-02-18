@@ -12,8 +12,8 @@ class CodeMakerTest < Minitest::Test
   end
 
   def test_it_starts_with_colors_and_empty_code_array
-    assert_equal @codemaker.colors, ["R", "G", "B", "Y"]
-    assert_equal @codemaker.code, []
+    assert_equal ["R", "G", "B", "Y"], @codemaker.colors
+    assert_equal [], @codemaker.code
   end
 
   def test_randomizing_code

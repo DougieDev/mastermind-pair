@@ -1,8 +1,3 @@
-require './lib/turn'
-require './lib/message'
-require './lib/codemaker'
-require './lib/codebreaker'
-
 class Game
   attr_reader :turn,
               :message,
@@ -13,12 +8,12 @@ class Game
     @message = Message.new
     @codemaker = Codemaker.new
     @codebreaker = Codebreaker.new
-    @turn = Turn.new(@codemaker, @codebreaker, @message)
+    @turn = Turn.new(@codemaker, @codebreaker)
+    @number_of_guesses = 0
   end
 
   def start_game
     @message.welcome_message
-    # @message.user_input_prompt
     @codemaker.randomize
     start_loop
   end
@@ -29,22 +24,14 @@ class Game
     initial_selection
   end
 
-  def intro
-    @message.play_game
-  end
-
-  def show_cheat
-    p "The secret code is: #{@codemaker.code.join}"
-  end
-
   def initial_selection
-    if @user_input == 'p'
-      intro
+    if @user_input == 'p' || @user_input == 'play'
+      @message.play_game
       game_flow
-    elsif @user_input == 'i'
+    elsif @user_input == 'i' || @user_input == 'instructions'
       @message.instructions
       start_loop
-    elsif @user_input == 'q'
+    elsif @user_input == 'q' || @user_input == 'quit'
       @message.quit
       abort
     else
@@ -52,59 +39,73 @@ class Game
     end
   end
 
-
   def game_flow
     until @turn.has_won? do
-      @user_guess_prompt = gets.chomp
-        if @user_guess_prompt == 'q'
+      user_guess_prompt = gets.chomp
+        if user_guess_prompt == 'q' || user_guess_prompt == 'quit'
           @message.quit
           abort
-        elsif @user_guess_prompt == 'c'
+        elsif user_guess_prompt == 'c' || user_guess_prompt == 'cheat'
           show_cheat
           game_flow
         end
-
-      @codebreaker.guess_code(@user_guess_prompt)
+      @codebreaker.guess_code(user_guess_prompt)
       guess_length_check
-      @turn.add_guess
-      if @codebreaker.guess == @codemaker.code
-        @message.winning_guess
-        end_game_prompt
-        # break
-      elsif @codebreaker.guess != @codemaker.code
-        @message.user_guess
-        incorrect_guess_hint
-      end
+      add_guess
+      evaluate_guess
     end
+  end
+
+  def evaluate_guess
+    if @codebreaker.guess == @codemaker.code
+      @message.winning_guess
+      end_game_prompt
+    elsif @codebreaker.guess != @codemaker.code
+      @message.user_guess
+      incorrect_guess_hint
+    end
+  end
+
+  def end_game_prompt
+    p "Congratulations! You guessed the sequence #{@codemaker.code.join} in #{@number_of_guesses} guesses!"
+    p "Do you want to (p)lay again or (q)uit?"
+    end_game_user_response
   end
 
   def guess_length_check
     if @codebreaker.guess.length < 4
-        @message.short_answer
-        game_flow
+      @message.short_answer
+      game_flow
     elsif @codebreaker.guess.length > 4
-        @message.long_answer
-        game_flow
+      @message.long_answer
+      game_flow
+    end
+  end
+
+  def end_game_user_response
+    response = gets.chomp.downcase
+    if response == 'p' || response == 'play'
+      @codemaker.code.clear
+      @codemaker.randomize
+      @number_of_guesses = 0
+      @message.play_game
+      game_flow
+    elsif response == 'q' || response == 'quit'
+      @message.quit
+      abort
     end
   end
 
   def incorrect_guess_hint
     p "#{@codebreaker.guess.join} has #{@turn.num_correct_colors} correct colors with #{@turn.num_correct_positions} in the correct positions."
-    p "You've taken #{@turn.number_of_guesses} guess(es)."
+    p "You've taken #{@number_of_guesses} guess(es)."
   end
 
-  def end_game_prompt
-    puts "Congratulations! You guessed the sequence #{@codemaker.code.join} in #{@turn.number_of_guesses} guesses!"
-    puts "Do you want to (p)lay again or (q)uit?"
-    @response = gets.chomp
-      if @response == 'p'
-        @codemaker.code.clear
-        @codemaker.randomize
-        intro
-        game_flow
-      elsif @response == 'q'
-        @message.quit
-        abort
-      end
+  def add_guess
+    @number_of_guesses += 1
+  end
+
+  def show_cheat
+    p "The secret code is: #{@codemaker.code.join}"
   end
 end
