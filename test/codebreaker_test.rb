@@ -1,11 +1,9 @@
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/codebreaker'
-require './lib/codemaker'
 
 class CodebreakerTest < Minitest::Test
   def setup
-    @codemaker = Codemaker.new
     @codebreaker = Codebreaker.new
   end
 
